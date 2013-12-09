@@ -11,17 +11,17 @@
 raffle_list = {}
 cases = {}
 
---[[
-function add_to_raffle(name)
+
+function add_to_raffle(name) -- optional raffle procedure
     table.insert(raffle_list, name)    
 end
 
 function remove_from_raffle(name)
     raffle_list[name] = nil
 end
-]]
 
-function init_cases(range_bottom, range_top, increment)
+
+function init_cases(range_bottom, range_top, increment) --set initial case values
     avail_cases = {}
     if range_top - range_bottom ~= increment*25 then
         print("Please make sure there are 25 cases supplied")
@@ -44,12 +44,12 @@ function init_cases(range_bottom, range_top, increment)
     end
 end
 
-function show_case(num)
+function show_case(num) --show the values for a case
     print("You chose case " .. num .. ", which contains ".. cases[num])
 end
 
-init_cases(100, 600, 20)
+init_cases(100, 600, 20) --sample data
 
-for i=1, 25 do
+for i=1, 25 do --show sample values
     show_case(i)
 end
