@@ -4,4 +4,4 @@ Still in the process of writing the application, you can use it, but the impleme
 
 About the program
 ------------------
-Aims to be a simple to use, convert, and expand `deal or no deal` script.
+Aims to be a simple to use, convert, and expand `deal or no deal` script. **highly embeddable**
