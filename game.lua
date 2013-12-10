@@ -10,6 +10,7 @@
 --Global variables
 raffle_list = {}
 cases = {}
+values = {}
 
 
 function add_to_raffle(name) -- optional raffle procedure
@@ -21,26 +22,17 @@ function remove_from_raffle(name)
 end
 
 
-function init_cases(range_bottom, range_top, increment) --set initial case values
-    avail_cases = {}
-    if range_top - range_bottom ~= increment*25 then
-        print("Please make sure there are 25 cases supplied")
-        os.exit(1)
+function init_cases(increment) --set initial case values
+    for i=1,25 do --25 total cases
+        table.insert(values, increment*i) --insert values into a 'values' table
     end
     for i=1,25 do
-        avail_cases[i] = true
+        rnd = math.random(#values) --get random value entry
+        cases[i] = values[rnd] --assign random value to next case
+        table.remove(values, rnd) --remove the value in question
     end
-    set_cases = 0;
-    while (set_cases <= 25) do
-        for i=range_bottom, range_top, increment do
-            rnd = math.random(25)
-            if (avail_cases[rnd]) then --Make sure we haven't assigned this case already
-                cases[rnd] = i
-                avail_cases[rnd] = false
-                set_cases= set_cases + 1
-                print("Setting cases["..rnd.."] to value: " .. cases[rnd])
-            end
-        end
+    for i,v in pairs(cases) do
+        print("Case["..i.."] == " ..v) --print out the cases for debugging purposes
     end
 end
 
@@ -48,8 +40,5 @@ function show_case(num) --show the values for a case
     print("You chose case " .. num .. ", which contains ".. cases[num])
 end
 
-init_cases(100, 600, 20) --sample data
+init_cases(120) --sample data
 
-for i=1, 25 do --show sample values
-    show_case(i)
-end
