@@ -31,9 +31,6 @@ function init_cases(increment) --set initial case values
         cases[i] = values[rnd] --assign random value to next case
         table.remove(values, rnd) --remove the value in question
     end
-    for i,v in pairs(cases) do
-        print("Case["..i.."] == " ..v) --print out the cases for debugging purposes
-    end
 end
 
 function show_case(num) --show the values for a case
